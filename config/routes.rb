@@ -1,8 +1,12 @@
 Pinterest::Application.routes.draw do
+  get "users/show"
+
   resources :pins
 
 
   devise_for :users
+  match 'users/:id' => 'users#show', as: :user
+  #as user was put for the _pin partial so u can link directly to a users name
 
   root :to => 'pins#index'
   get 'about' =>'pages#about'
